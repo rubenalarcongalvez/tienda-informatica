@@ -2,10 +2,12 @@ package org.iesvegademijas.stream.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
 import static java.util.Comparator.*;
@@ -620,4 +622,653 @@ class TiendaTest {
 		
 	}
 	
+	/**
+	 * 23. Devuelve una lista con el nombre del producto, precio y nombre de fabricante de todos los productos de la base de datos. 
+	 * Ordene el resultado por el nombre del fabricante, por orden alfabético.
+	 */
+	@Test
+	void test23() {
+		
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();
+			
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 24. Devuelve el nombre del producto, su precio y el nombre de su fabricante, del producto más caro.
+	 */
+	@Test
+	void test24() {
+		
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();
+			
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 25. Devuelve una lista de todos los productos del fabricante Crucial que tengan un precio mayor que 200€.
+	 */
+	@Test
+	void test25() {
+		
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();
+			
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 26. Devuelve un listado con todos los productos de los fabricantes Asus, Hewlett-Packard y Seagate
+	 */
+	@Test
+	void test26() {
+		
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();
+			
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 27. Devuelve un listado con el nombre de producto, precio y nombre de fabricante, de todos los productos que tengan un precio mayor o igual a 180€. 
+	 * Ordene el resultado en primer lugar por el precio (en orden descendente) y en segundo lugar por el nombre.
+	 * El listado debe mostrarse en formato tabla. Para ello, procesa las longitudes máximas de los diferentes campos a presentar y compensa mediante la inclusión de espacios en blanco.
+	 * La salida debe quedar tabulada como sigue:
+
+Producto                Precio             Fabricante
+-----------------------------------------------------
+GeForce GTX 1080 Xtreme|611.5500000000001 |Crucial
+Portátil Yoga 520      |452.79            |Lenovo
+Portátil Ideapd 320    |359.64000000000004|Lenovo
+Monitor 27 LED Full HD |199.25190000000003|Asus
+
+	 */		
+	@Test
+	void test27() {
+		
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();
+			
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 28. Devuelve un listado de los nombres fabricantes que existen en la base de datos, junto con los nombres productos que tiene cada uno de ellos. 
+	 * El listado deberá mostrar también aquellos fabricantes que no tienen productos asociados. 
+	 * SÓLO SE PUEDEN UTILIZAR STREAM, NO PUEDE HABER BUCLES
+	 * La salida debe queda como sigue:
+Fabricante: Asus
+
+            	Productos:
+            	Monitor 27 LED Full HD
+            	Monitor 24 LED Full HD
+
+Fabricante: Lenovo
+
+            	Productos:
+            	Portátil Ideapd 320
+            	Portátil Yoga 520
+
+Fabricante: Hewlett-Packard
+
+            	Productos:
+            	Impresora HP Deskjet 3720
+            	Impresora HP Laserjet Pro M26nw
+
+Fabricante: Samsung
+
+            	Productos:
+            	Disco SSD 1 TB
+
+Fabricante: Seagate
+
+            	Productos:
+            	Disco duro SATA3 1TB
+
+Fabricante: Crucial
+
+            	Productos:
+            	GeForce GTX 1080 Xtreme
+            	Memoria RAM DDR4 8GB
+
+Fabricante: Gigabyte
+
+            	Productos:
+            	GeForce GTX 1050Ti
+
+Fabricante: Huawei
+
+            	Productos:
+
+
+Fabricante: Xiaomi
+
+            	Productos:
+
+	 */
+	@Test
+	void test28() {
+	
+		FabricanteHome fabHome = new FabricanteHome();
+		
+		try {
+			fabHome.beginTransaction();
+	
+			List<Fabricante> listFab = fabHome.findAll();
+					
+			//TODO STREAMS
+								
+			fabHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			fabHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+	}
+	
+	/**
+	 * 29. Devuelve un listado donde sólo aparezcan aquellos fabricantes que no tienen ningún producto asociado.
+	 */
+	@Test
+	void test29() {
+	
+		FabricanteHome fabHome = new FabricanteHome();
+		
+		try {
+			fabHome.beginTransaction();
+	
+			List<Fabricante> listFab = fabHome.findAll();
+					
+			//TODO STREAMS
+								
+			fabHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			fabHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+	}
+	
+	/**
+	 * 30. Calcula el número total de productos que hay en la tabla productos. Utiliza la api de stream.
+	 */
+	@Test
+	void test30() {
+	
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();		
+						
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+
+	
+	/**
+	 * 31. Calcula el número de fabricantes con productos, utilizando un stream de Productos.
+	 */
+	@Test
+	void test31() {
+	
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();		
+						
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 32. Calcula la media del precio de todos los productos
+	 */
+	@Test
+	void test32() {
+	
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();		
+						
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 33. Calcula el precio más barato de todos los productos. No se puede utilizar ordenación de stream.
+	 */
+	@Test
+	void test33() {
+	
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();		
+						
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 34. Calcula la suma de los precios de todos los productos.
+	 */
+	@Test
+	void test34() {
+		
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();		
+						
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 35. Calcula el número de productos que tiene el fabricante Asus.
+	 */
+	@Test
+	void test35() {
+		
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();		
+						
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 36. Calcula la media del precio de todos los productos del fabricante Asus.
+	 */
+	@Test
+	void test36() {
+		
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();		
+						
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	
+	/**
+	 * 37. Muestra el precio máximo, precio mínimo, precio medio y el número total de productos que tiene el fabricante Crucial. 
+	 *  Realízalo en 1 solo stream principal. Utiliza reduce con Double[] como "acumulador".
+	 */
+	@Test
+	void test37() {
+		
+		ProductoHome prodHome = new ProductoHome();	
+		try {
+			prodHome.beginTransaction();
+		
+			List<Producto> listProd = prodHome.findAll();
+						
+			//TODO STREAMS
+			
+			prodHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			prodHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 38. Muestra el número total de productos que tiene cada uno de los fabricantes. 
+	 * El listado también debe incluir los fabricantes que no tienen ningún producto. 
+	 * El resultado mostrará dos columnas, una con el nombre del fabricante y otra con el número de productos que tiene. 
+	 * Ordene el resultado descendentemente por el número de productos. Utiliza String.format para la alineación de los nombres y las cantidades.
+	 * La salida debe queda como sigue:
+	 
+     Fabricante     #Productos
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+           Asus              2
+         Lenovo              2
+Hewlett-Packard              2
+        Samsung              1
+        Seagate              1
+        Crucial              2
+       Gigabyte              1
+         Huawei              0
+         Xiaomi              0
+
+	 */
+	@Test
+	void test38() {
+	
+		FabricanteHome fabHome = new FabricanteHome();
+		
+		try {
+			fabHome.beginTransaction();
+				
+			List<Fabricante> listFab = fabHome.findAll();
+				
+			//TODO STREAMS
+		
+			fabHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			fabHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+	}
+	
+	/**
+	 * 39. Muestra el precio máximo, precio mínimo y precio medio de los productos de cada uno de los fabricantes. 
+	 * El resultado mostrará el nombre del fabricante junto con los datos que se solicitan. Realízalo en 1 solo stream principal. Utiliza reduce con Double[] como "acumulador".
+	 * Deben aparecer los fabricantes que no tienen productos.
+	 */
+	@Test
+	void test39() {
+	
+		FabricanteHome fabHome = new FabricanteHome();
+		
+		try {
+			fabHome.beginTransaction();
+				
+			List<Fabricante> listFab = fabHome.findAll();
+				
+			//TODO STREAMS
+		
+			fabHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			fabHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+	}
+	
+	/**
+	 * 40. Muestra el precio máximo, precio mínimo, precio medio y el número total de productos de los fabricantes que tienen un precio medio superior a 200€. 
+	 * No es necesario mostrar el nombre del fabricante, con el código del fabricante es suficiente.
+	 */
+	@Test
+	void test40() {
+	
+		FabricanteHome fabHome = new FabricanteHome();
+		
+		try {
+			fabHome.beginTransaction();
+				
+			List<Fabricante> listFab = fabHome.findAll();
+				
+			//TODO STREAMS
+		
+			fabHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			fabHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+	}
+	
+	/**
+	 * 41. Devuelve un listado con los nombres de los fabricantes que tienen 2 o más productos.
+	 */
+	@Test
+	void test41() {
+		
+		FabricanteHome fabHome = new FabricanteHome();
+		
+		try {
+			fabHome.beginTransaction();
+				
+			List<Fabricante> listFab = fabHome.findAll();
+				
+			//TODO STREAMS
+		
+			fabHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			fabHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+	}
+	
+	/**
+	 * 42. Devuelve un listado con los nombres de los fabricantes y el número de productos que tiene cada uno con un precio superior o igual a 220 €. 
+	 * Ordenado de mayor a menor número de productos.
+	 */
+	@Test
+	void test42() {
+		
+		FabricanteHome fabHome = new FabricanteHome();
+		
+		try {
+			fabHome.beginTransaction();
+				
+			List<Fabricante> listFab = fabHome.findAll();
+				
+			//TODO STREAMS
+		
+			fabHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			fabHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 43.Devuelve un listado con los nombres de los fabricantes donde la suma del precio de todos sus productos es superior a 1000 €
+	 */
+	@Test
+	void test43() {
+		
+		FabricanteHome fabHome = new FabricanteHome();
+		
+		try {
+			fabHome.beginTransaction();
+				
+			List<Fabricante> listFab = fabHome.findAll();
+				
+			//TODO STREAMS
+		
+			fabHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			fabHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 44. Devuelve un listado con los nombres de los fabricantes donde la suma del precio de todos sus productos es superior a 1000 €
+	 * Ordenado de menor a mayor por cuantía de precio de los productos.
+	 */
+	@Test
+	void test44() {
+		
+		FabricanteHome fabHome = new FabricanteHome();
+		
+		try {
+			fabHome.beginTransaction();
+				
+			List<Fabricante> listFab = fabHome.findAll();
+				
+			//TODO STREAMS
+		
+			fabHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			fabHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+		
+	}
+	
+	/**
+	 * 45. Devuelve un listado con el nombre del producto más caro que tiene cada fabricante. 
+	 * El resultado debe tener tres columnas: nombre del producto, precio y nombre del fabricante. 
+	 * El resultado tiene que estar ordenado alfabéticamente de menor a mayor por el nombre del fabricante.
+	 */
+	@Test
+	void test45() {
+		
+		FabricanteHome fabHome = new FabricanteHome();
+		
+		try {
+			fabHome.beginTransaction();
+				
+			List<Fabricante> listFab = fabHome.findAll();
+				
+			//TODO STREAMS
+		
+			fabHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			fabHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+			
+	}
+	
+	/**
+	 * 46. Devuelve un listado de todos los productos que tienen un precio mayor o igual a la media de todos los productos de su mismo fabricante.
+	 * Se ordenará por fabricante en orden alfabético ascendente y los productos de cada fabricante tendrán que estar ordenados por precio descendente.
+	 */
+	@Test
+	void test46() {
+		
+		FabricanteHome fabHome = new FabricanteHome();
+		
+		try {
+			fabHome.beginTransaction();
+				
+			List<Fabricante> listFab = fabHome.findAll();
+				
+			//TODO STREAMS															
+		
+			fabHome.commitTransaction();
+		}
+		catch (RuntimeException e) {
+			fabHome.rollbackTransaction();
+		    throw e; // or display error message
+		}
+			
+	}
+	
 }
+

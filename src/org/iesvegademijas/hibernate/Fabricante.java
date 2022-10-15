@@ -41,7 +41,7 @@ public class Fabricante implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	public Set getProductos() {
+	public Set<Producto> getProductos() {
 		return this.productos;
 	}
 
